@@ -30,5 +30,4 @@ entries:
     urls:
     - https://github.com/nats-io/k8s/releases/download/nats-0.17.0/nats-0.17.0.tgz
     version: 0.17.0
-    appVersion: 2.8.0
 generated: "2022-05-16T12:17:10.125442626Z"
