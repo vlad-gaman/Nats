@@ -84,14 +84,14 @@ spec:
     {{- include "nats.selectorLabels" . | nindent 4 }}
   ports:
     - protocol: TCP
-      port: 4222
+      port: 4223
       targetPort: 4222
       name: nats
     - protocol: TCP
-      port: 7422
+      port: 7423
       targetPort: 7422
       name: leafnodes
     - protocol: TCP
-      port: 7522
+      port: 7523
       targetPort: 7522
       name: gateways
