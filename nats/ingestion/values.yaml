@@ -18,6 +18,11 @@ nats:
   # spanning multiple Kubernetes clusters.
   serverNamePrefix: ""
 
+  # Server Tags
+  serverTags:
+  # - "foo"
+  # - "bar"
+
   # Toggle profiling.
   # This enables nats-server pprof (profiling) port, so you can see goroutines
   # stacks, memory heap sizes, etc.
@@ -102,7 +107,14 @@ nats:
   # In case both external access and advertise are enabled
   # then a service account would be required to be able to
   # gather the public ip from a node.
-  serviceAccount: "nats-server"
+  serviceAccount:
+    # Specifies whether a service account should be created
+    create: true
+    # Annotations to add to the service account
+    annotations: {}
+    # The name of the service account to use.
+    # If not set and create is true, a name is generated using the fullname template
+    name: "nats-server"
 
   # The number of connect attempts against discovered routes.
   connectRetries: 120
@@ -184,6 +196,9 @@ nats:
 
     # Jetstream Domain
     domain: server
+
+    # Jetstream Unique Tag prevent placing a stream in the same availability zone twice.
+    uniqueTag:
 
     ##########################
     #                        #
@@ -595,6 +610,9 @@ auth:
 
       # Size of the account JWT storage.
       size: 1Gi
+
+      # StorageClass of JWT storage claim.
+      # storageClassName: ""
 
     ##############################
     #                            #
