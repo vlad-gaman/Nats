@@ -544,7 +544,7 @@ exporter:
 
 # Authentication setup
 auth:
-  enabled: false
+  enabled: true
 
   # basic:
   #   noAuthUser:
