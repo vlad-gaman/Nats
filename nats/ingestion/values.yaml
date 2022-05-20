@@ -1,9 +1,5 @@
 applicationFullName: mposair-main-data-ingestion-nats
 apiVersion: apps/v1
-namespace: mposselfservices
-
-ingress: 
-  enabled: false
     
 ###############################
 #                             #
@@ -97,12 +93,12 @@ nats:
 
   # Toggle whether to enable external access.
   # This binds a host port for clients, gateways and leafnodes.
-  externalAccess: true
+  externalAccess: false
 
   # Toggle to disable client advertisements (connect_urls),
   # in case of running behind a load balancer
   # it might be required to disable advertisements.
-  advertise: true
+  advertise: false
 
   # In case both external access and advertise are enabled
   # then a service account would be required to be able to
@@ -369,7 +365,7 @@ additionalVolumeMounts: []
 cluster:
   enabled: true
   replicas: 3
-  noAdvertise: false
+  noAdvertise: true
 
   # Explicitly set routes for clustering.
   # When JetStream is enabled, the serverName must be unique in the cluster.
@@ -387,7 +383,7 @@ cluster:
 leafnodes:
   enabled: true
   port: 7422
-  noAdvertise: false
+  noAdvertise: true
   # remotes:
   #   - url: "tls://connect.ngs.global:7422"
 
@@ -548,7 +544,7 @@ exporter:
 
 # Authentication setup
 auth:
-  enabled: true
+  enabled: false
 
   # basic:
   #   noAuthUser:
